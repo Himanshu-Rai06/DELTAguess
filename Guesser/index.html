@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <meta name="theme-color" content="#0b0b12">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>△GUESS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="sage-green"> 
+    
+    <audio id="snd-bg" loop></audio>
+    <audio id="snd-start" src="game-start.mp3"></audio>
+    <audio id="snd-clear" src="game-clear.mp3"></audio>
+    <audio id="snd-lose" src="game-lose.mp3"></audio>
+    <audio id="snd-error" src="beep.mp3"></audio>
+
+    <main class="glass-card">
+        <header class="app-header">
+            <div class="brand">△GUESS</div>
+            
+            <div class="header-actions">
+                <div id="lobbyUI" class="ui-group">
+                    <button id="clearHSBtn" class="icon-btn" title="Clear High Score">🗑️</button>
+                </div>
+
+                <div id="gameUI" class="ui-group hidden">
+                    <div id="timerDisplay" class="timer-badge">60s</div>
+                </div>
+
+                <div class="divider-v"></div>
+                <button class="icon-btn" id="settingsBtn">⚙️</button>
+            </div>
+        </header>
+
+        <div class="settings-panel hidden" id="settingsPanel">
+            <div class="setting-row">
+                <span id="volIcon">🔊</span>
+                <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="0.5" class="volume-slider">
+            </div>
+            <div class="separator"></div>
+            <div class="setting-label">Theme</div>
+            <div class="theme-list">
+                <div class="theme-dot dark" data-set-theme="dark" title="Dark"></div>
+                <div class="theme-dot blue" data-set-theme="pastel-blue" title="Blue"></div>
+                <div class="theme-dot pink" data-set-theme="pastel-pink" title="Pink"></div>
+                <div class="theme-dot grey" data-set-theme="grey-white" title="Oyster"></div>
+                <div class="theme-dot green active" data-set-theme="sage-green" title="Sage"></div>
+            </div>
+        </div>
+
+        <section id="startScreen" class="view-section active">
+            <div class="hero-content">
+                <h1 class="hero-title">READY?</h1>
+                <p class="hero-sub">Select your challenge</p>
+            </div>
+            
+            <div class="control-box">
+                <div class="select-wrapper">
+                    <select id="diffSelect" class="glass-select-large">
+                        <option value="easy">Easy (1-50)</option>
+                        <option value="medium" selected>Medium (1-100)</option>
+                        <option value="hard">Hard (1-500)</option>
+                    </select>
+                </div>
+                <button id="startGameBtn" class="btn-primary">START GAME</button>
+            </div>
+        </section>
+
+        <section id="gameScreen" class="view-section hidden">
+            <div class="game-info">
+                <div class="status-text" id="statusMessage">GUESS</div>
+                <div class="hint-text" id="hintMessage">Type a number to begin</div>
+                <div class="range-container">
+                    <div class="range-bar" id="rangeBar"></div>
+                </div>
+            </div>
+
+            <div class="input-area">
+                <input type="number" id="guessInput" class="glass-input" placeholder="#" autocomplete="off">
+                <button id="actionBtn" class="btn-action">GO</button>
+            </div>
+        </section>
+
+        <footer class="stats-footer">
+            <div class="stat-item">
+                <span class="lbl">ATTEMPTS</span>
+                <span class="val" id="attemptsVal">0</span>
+            </div>
+            <div class="stat-item align-right">
+                <span class="lbl">HIGH SCORE</span>
+                <span class="val" id="highScoreVal">--</span>
+            </div>
+        </footer>
+    </main>
+
+    <div class="overlay hidden" id="overlay">
+        <div class="overlay-content">
+            <h1 id="overlayTitle">VICTORY</h1>
+            <p id="overlaySubtitle">You guessed it right!</p>
+            <button class="btn-equal btn-wide" id="restartBtn">MAIN MENU</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
