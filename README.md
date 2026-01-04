@@ -38,7 +38,7 @@ A minimalist **Guess the Number** game built with pure HTML, CSS, and JavaScript
 ---
 
 ## 🚀 Live Demo
-👉 https://Himanshu-Rai06/DELTAguess/
+👉 [https://Himanshu-Rai06/DELTAguess/](https://github.com/Himanshu-Rai06/DELTAguess/tree/main/Guesser)
 
 ---
 
